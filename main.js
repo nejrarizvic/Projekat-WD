@@ -65,7 +65,7 @@ fetch('https://ptf-web-dizajn-2022.azurewebsites.net/books')
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Reservation</button>
-                           
+                            <button type="button" class="btn btn-primary" onclick="editBook()">Edit</button>
                           </div>
                         </div>
                       </div>
@@ -90,7 +90,7 @@ const deleteBooks = (books) => {
   })
   .then(res => {
       if (res.ok) {
-          console.log(`Status code: ${res.status}`);
+          console.log(`Delete status code: ${res.status}`);
           
           let booksCard = document.getElementById(booksId);
          booksCard.remove();
@@ -103,60 +103,77 @@ const deleteBooks = (books) => {
 
 
 const addBook = () => {
-  const bookName = document.getElementById('book-name').value;
+  let bookId = document.getElementById('book-id').value;
+  let bookName = document.getElementById('book-name').value;
+  let bookGenre = document.getElementById('book-genre').value;
+  let bookImage = document.getElementById('book-image').value;
+  let bookAuthor = document.getElementById('book-author').value;
+  let authorId = document.getElementById('author-id').value;
   
-  fetch(`${BASE_URL}/api/books/new`, {
+  fetch('https://ptf-web-dizajn-2022.azurewebsites.net/books', {
       method: 'POST',
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify({
-          name: bookName
+          name: bookName,
+          genre: bookGenre,
+          image: bookImage,
+          authorId: authorId
       })
   })
   .then(res => {
-      console.log(res);
+      if (res.ok) {
+        console.log(res.status);
+      }
   })
 }
 
 
-/*
-const fillEditData = (bookId) => {
-  const book = books.find(book => book.id === bookId);
-  const bookFormId = document.getElementById('book-id');
-  const bookFormName = document.getElementById('book-name');
-  const bookFormImage = document.getElementById('book-image');
-  const bookFormAuthor = document.getElementById('book-author');
 
-  bookFormId.value = book.id;
-  bookFormName.value = book.name;
-  bookFormImage.value = book.imageUrl;
-  bookFormAuthor.value = book.author;
+const fillEditData = (bookId) => {
+    const book = book.find(book => book.id === bookId);
+    const bookFormId = document.getElementById('book-id');
+    const bookFormName = document.getElementById('book-name');
+    const bookFormGenre = document.getElementById('book-genre');
+    const bookFormImage = document.getElementById('book-image');
+    const bookFormAuthor = document.getElementById('book-author');
+    const authorFormId = document.getElementById('author-id');
+
+    bookFormId.value = book.id;
+    bookFormName.value = book.name;
+    bookFormGenre.value = book.genre;
+    bookFormImage.value = book.image;
+    bookFormAuthor.value = book.author;
+    authorFormId.value = author.id;
 }
 
 const editBook = () => { 
-  const bookFormId = document.getElementById('book-id').value;
-  const bookFormName = document.getElementById('book-name').value;
-  const bookFormImage = document.getElementById('book-image').value;
-  const bookFormAuthor = document.getElementById('book-author').value;
+    const bookFormId = document.getElementById('book-id').value;
+    const bookFormName = document.getElementById('book-name').value;
+    const bookFormGenre = document.getElementById('book-genre').value;
+    const bookFormImage = document.getElementById('book-image').value;
+    const bookFormAuthor = document.getElementById('book-author').value;
+    const authorFormId = document.getElementById('author-id').value;
 
-fetch(`${BASE_URL}/api/Book`, {
-  method: 'PUT', 
-  headers: new Headers({'content-type': 'application/json'}),
-  body: JSON.stringify({
-      id: bookFormId,
-      name: bookFormName,
-      imageUrl: bookFormImage,
-      author: bookFormAuthor
-  })
-})
-.then(res => {
-  if(!res.ok)
-  {
-      alert('Error');
-  }
-})
+    fetch('https://ptf-web-dizajn-2022.azurewebsites.net/books', {
+        method: 'PUT', 
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
+            id: bookFormId,
+            name: bookFormName,
+            genre: bookGenre,
+            image: bookFormImage,
+            authorId: authorFormId
+        })
+    })
+    .then(res => {
+        if(!res.ok)
+        {
+            alert('Error');
+        }
+    })
 }
 
-*/
+
 
 
 

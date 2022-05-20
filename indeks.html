@@ -32,9 +32,11 @@
             <a class="nav-link active" aria-current="page" href="./stranice/About.html">About</a>
           </li>
         </ul>
+        <form class="d-flex">
+          <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add new book</a>  
+        </form>
       </div>
     </div> 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add new book</button>  
   </nav>
 
 
@@ -51,11 +53,15 @@
           <form>
             <div class="mb-3">
                 <label for="book-id" class="col-form-label">Id:</label>
-                <input type="text" class="form-control" id="book-id" disabled>
+                <input type="text" class="form-control" id="book-id">
               </div>
             <div class="mb-3">
               <label for="book-name" class="col-form-label">Name:</label>
               <input type="text" class="form-control" id="book-name">
+            </div>
+            <div class="mb-3">
+              <label for="book-genre" class="col-form-label">Genre:</label>
+              <input type="text" class="form-control" id="book-genre">
             </div>
             <div class="mb-3">
               <label for="book-image" class="col-form-label">Image:</label>
@@ -64,6 +70,10 @@
             <div class="mb-3">
                 <label for="book-price" class="col-form-label">Author:</label>
                 <input type="number" class="form-control" id="book-author">
+              </div>
+              <div class="mb-3">
+                <label for="author-id" class="col-form-label">AuthorId:</label>
+                <input type="text" class="form-control" id="author-id">
               </div>
           </form>
         </div>
@@ -112,12 +122,12 @@
                     </div>
 
                    <div class="card-body">
-                    <h3 class="card-title">Aquaman</h3>
+                    <h3 class="card-title">In depth guide to price action trading</h3>
                     <div class="card-info">
-                       <span class="genre">5,50 KM</span>
+                       <span class="genre">Genre: Action</span>
                     </div>
                       <div class="card-info">
-                         <span class="author">Author:</span>
+                         <span class="author">Author:Laurentiu Damir </span>
                       </div>
                    </div>
                  </div>
